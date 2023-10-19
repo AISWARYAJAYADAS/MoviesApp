@@ -20,11 +20,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-
     private lateinit var binding: ActivityMainBinding
     private val moviesViewModel: MoviesViewModel by viewModels()
-
     private val mAdapter by lazy { MoviesAdapter() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
