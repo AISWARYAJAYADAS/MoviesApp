@@ -12,7 +12,7 @@ import javax.inject.Inject
 class Repository @Inject constructor(
     remoteDataSource: RemoteDataSource
 ){
-    val remote = remoteDataSource
+    private val remote = remoteDataSource
 
     suspend fun getMovieDetails(imdbIDQuery: String,apiKey: String) : Response<MovieDetailsRespnse>{
         return remote.getMovieDetails(imdbIDQuery, apiKey)

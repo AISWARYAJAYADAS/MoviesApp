@@ -60,10 +60,6 @@ class MovieDetailsActivity : AppCompatActivity() {
                         binding.movieTypeTextView.text= response.movieDetail.body()?.type ?: "movie type"
                         binding.directorTextView2.text= response.movieDetail.body()?.director ?: "movie director"
                         binding.writerTextView2.text= response.movieDetail.body()?.writer ?: "movie writer"
-
-
-
-
                     }
                 }
 

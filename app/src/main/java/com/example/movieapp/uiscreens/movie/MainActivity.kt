@@ -25,56 +25,31 @@ class MainActivity : AppCompatActivity() {
     private val mAdapter by lazy { MoviesAdapter() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Initialize DataBinding
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setContentView(binding.root)
-        //
-        mAdapter.onItemClick = {
-            val intent = Intent(this, MovieDetailsActivity::class.java)
-            intent.putExtra(
-                "id",
-                it
-            )
-            startActivity(intent)
 
+        mAdapter.onItemClick = { movieID ->
+            startMovieDetailsActivity(movieID)
         }
-        //search
-        binding.movieSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                lifecycleScope.launch {
-                    if (newText != null) {
-                        lifecycleScope.launch {
-                            moviesViewModel.getMoviesPaging(newText).collectLatest { pagingData ->
-                                mAdapter.submitData(pagingData)
-                            }
-                        }
-                    }
-                    if (newText != null) {
-                        if (newText.isEmpty()) {
-                            lifecycleScope.launch {
-                                moviesViewModel.getMoviesPaging(SEARCH)
-                                    .collectLatest { pagingData ->
-                                        mAdapter.submitData(pagingData)
-                                    }
-                            }
-                        }
-                    }
-                }
-                return true
-            }
-        })
+        setupUI()
+
+    }
+
+    private fun setupUI() {
         setupRecyclerView()
+        setupSearchView()
+        observeData()
+    }
+
+    private fun observeData() {
         // Observe the PagingData and submit it to the adapter
         lifecycleScope.launch {
             moviesViewModel.getMoviesPaging(SEARCH).collectLatest { pagingData ->
                 mAdapter.submitData(pagingData)
             }
         }
-
     }
 
     private fun setupRecyclerView() {
@@ -82,9 +57,35 @@ class MainActivity : AppCompatActivity() {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(applicationContext)
         }
-        binding.searchRecyclerView.apply {
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(applicationContext)
+    }
+
+    private fun setupSearchView() {
+        binding.movieSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                handleSearchQuery(newText)
+                return true
+            }
+        })
+    }
+
+    private fun handleSearchQuery(newText: String?) {
+        if (newText != null) {
+            val query = newText.ifEmpty { SEARCH }
+            lifecycleScope.launch {
+                moviesViewModel.getMoviesPaging(query).collectLatest { pagingData ->
+                    mAdapter.submitData(pagingData)
+                }
+            }
         }
+    }
+
+    private fun startMovieDetailsActivity(movieId: String) {
+        val intent = Intent(this, MovieDetailsActivity::class.java)
+        intent.putExtra("id", movieId)
+        startActivity(intent)
     }
 }
