@@ -20,8 +20,7 @@ Movie App is a simple Android application built in Kotlin that allows users to s
 ## ScreenShots
 
 
-![Alt Text](screenshots/home_new.png)
+![Alt Text](screenshots/MovieList.png)
 ![Alt Text](screenshots/Search.png)
-![Alt Text](screenshots/search_output.png)
-![Alt Text](screenshots/MovieDetail.png)
+![Alt Text](screenshots/MovieDetailsss.png)
 

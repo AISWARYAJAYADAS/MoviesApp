@@ -16,7 +16,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="Movie App"
-            app:titleTextColor="@color/colorPrimary">
+            style="@style/ToolbarThemeOverlay"
+            app:titleTextAppearance="@style/ToolbarThemeOverlay"
+            android:textSize="22sp"
+            app:titleTextColor="@color/colorPrimaryDark">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/movie_search"

@@ -4,4 +4,15 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+    <style name="ToolbarThemeOverlay" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_slab</item>
+        <item name="android:textAppearance">@style/ToolbarTextAppearance</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ToolbarTextAppearance">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
