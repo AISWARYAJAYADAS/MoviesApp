@@ -1,7 +1,8 @@
 package com.example.movieapp.di
 
+import com.example.movieapp.BuildConfig
 import com.example.movieapp.data.network.MovieApiService
-import com.example.movieapp.util.Constants.Companion.BASE_URL
+import com.example.movieapp.util.LoggingInterceptorImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,12 +19,29 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient():OkHttpClient{
+    fun provideLoggingInterceptor(): LoggingInterceptorImpl {
+        return LoggingInterceptorImpl()
+    }
+    @Singleton
+    @Provides
+    fun provideHttpClient(
+        loggingInterceptor: LoggingInterceptorImpl
+    ): OkHttpClient {
         return OkHttpClient.Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
             .build()
     }
+
+//    @Singleton
+//    @Provides
+//    fun provideHttpClient():OkHttpClient{
+//        return OkHttpClient.Builder()
+//            .readTimeout(15, TimeUnit.SECONDS)
+//            .connectTimeout(15, TimeUnit.SECONDS)
+//            .build()
+//    }
 
     @Singleton
     @Provides
@@ -38,7 +56,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

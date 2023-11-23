@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/app_toolbar"
+            android:id="@+id/abMovieDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -22,20 +22,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/scrollView"/>
+            app:layout_constraintBottom_toTopOf="@id/scrollMovieDetail"/>
 
         <ScrollView
-            android:id="@+id/scrollView"
+            android:id="@+id/scrollMovieDetail"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/app_toolbar">
+            android:layout_height="@dimen/scrollMovieDetailHeight"
+            app:layout_constraintTop_toBottomOf="@id/abMovieDetail">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/detailsLayout"
+                android:id="@+id/clMovieDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/lightMediumGray"
-                android:paddingBottom="30dp">
+                android:paddingBottom="@dimen/clMovieDetailsPaddingBottom">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
@@ -44,22 +44,22 @@
                     android:background="@color/navy"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView">
+                    app:layout_constraintTop_toBottomOf="@+id/ivMovieDetailMoviePoster">
 
                     <TextView
-                        android:id="@+id/movieTitleTextView"
+                        android:id="@+id/tvMovieDetailTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="@dimen/tvMovieDetailTitleMarginStart"
+                        android:layout_marginTop="@dimen/tvMovieDetailTitleMarginTop"
+                        android:layout_marginEnd="@dimen/tvMovieDetailTitleMarginEnd"
                         android:ellipsize="end"
                         android:maxLines="2"
                         android:gravity="center_horizontal"
-                        android:padding="5dp"
+                        android:padding="@dimen/tvMovieDetailTitlePadding"
                         android:text="@string/title"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/tvMovieDetailTitleTextSize"
                         android:textStyle="normal"
                         android:fontFamily="@font/roboto_slab"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -68,54 +68,54 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/movieTypeTextView"
+                        android:id="@+id/tvMovieDetailType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="@dimen/tvMovieDetailTypeMarginStart"
+                        android:layout_marginTop="@dimen/tvMovieDetailTypeMarginTop"
+                        android:layout_marginBottom="@dimen/tvMovieDetailTypeMarginBottom"
                         android:ellipsize="end"
                         android:maxLines="2"
                         android:text="@string/type"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/tvMovieDetailTypeTextSize"
                         android:textStyle="normal"
                         android:fontFamily="@font/roboto_slab"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMovieDetailTitle"
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
-                        android:id="@+id/movieYearTextView"
-                        android:layout_width="260dp"
+                        android:id="@+id/tvMovieDetailYear"
+                        android:layout_width="@dimen/tvMovieDetailYearWidth"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="@dimen/tvMovieDetailYearMarginTop"
+                        android:layout_marginEnd="@dimen/tvMovieDetailYearMarginEnd"
+                        android:layout_marginBottom="@dimen/tvMovieDetailYearMarginBottom"
                         android:ellipsize="end"
                         android:text="@string/year"
                         android:fontFamily="@font/roboto_slab"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/tvMovieDetailYearTextSize"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.384"
-                        app:layout_constraintStart_toEndOf="@+id/movieTypeTextView"
-                        app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+                        app:layout_constraintStart_toEndOf="@+id/tvMovieDetailType"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMovieDetailTitle"
                         app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <ImageView
-                    android:id="@+id/moviePosterImageView"
-                    android:layout_width="0dp"
-                    android:layout_height="430dp"
+                    android:id="@+id/ivMovieDetailMoviePoster"
+                    android:layout_width="@dimen/ivMovieDetailMoviePosterWidth"
+                    android:layout_height="@dimen/ivMovieDetailMoviePosterHeight"
                     android:background="@color/navy"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingStart="@dimen/ivMovieDetailMoviePosterPaddingStart"
+                    android:paddingEnd="@dimen/ivMovieDetailMoviePosterPaddingEnd"
+                    android:paddingBottom="@dimen/ivMovieDetailMoviePosterPaddingBottom"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/movieposter"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -124,76 +124,75 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/directorTextView1"
+                    android:id="@+id/tvDirector1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/tvDirector1TextSize"
                     android:fontFamily="@font/roboto_slab"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="@string/director"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-                    android:layout_margin="20dp"
+                    android:layout_margin="@dimen/tvDirector1Margin"
                     />
                 <TextView
-                    android:id="@+id/directorTextView2"
+                    android:id="@+id/tvMovieDetailDirector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:fontFamily="@font/roboto_slab"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/directorTextView1"
-                    android:layout_margin="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvDirector1"
+                    android:layout_margin="@dimen/tvDirector1Margin"
 
                     />
                 <View
-                    android:id="@+id/directorView"
+                    android:id="@+id/vDirector"
                     android:layout_width="match_parent"
-                    android:layout_height="1.5dp"
-                    android:layout_margin="5dp"
+                    android:layout_height="@dimen/vDirectorHeight"
+                    android:layout_margin="@dimen/vDirectorMargin"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/directorTextView2"
+                    app:layout_constraintTop_toBottomOf="@id/tvMovieDetailDirector"
                     />
 
                 <TextView
-                    android:id="@+id/writerTextView1"
+                    android:id="@+id/tvMovieDetailWriter1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/tvMovieDetailWriter1TextSize"
                     android:fontFamily="@font/roboto_slab"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="@string/writer"
-                    android:layout_margin="20dp"
+                    android:layout_margin="@dimen/tvMovieDetailWriter1Margin"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/directorView"
+                    app:layout_constraintTop_toBottomOf="@id/vDirector"
                     />
                 <TextView
-                    android:id="@+id/writerTextView2"
+                    android:id="@+id/tvMovieDetailWriter2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/tvMovieDetailWriter2TextSize"
                     android:fontFamily="@font/roboto_slab"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/writerTextView1"
-                    android:layout_margin="20dp"
-
+                    app:layout_constraintTop_toBottomOf="@id/tvMovieDetailWriter1"
+                    android:layout_margin="@dimen/tvMovieDetailWriter2Margin"
                     />
 
                 <View
-                    android:id="@+id/writerView"
+                    android:id="@+id/vMovieDetailWriter"
                     android:layout_width="match_parent"
-                    android:layout_height="1.5dp"
-                    android:layout_margin="5dp"
+                    android:layout_height="@dimen/vMovieDetailWriterHeight"
+                    android:layout_margin="@dimen/vMovieDetailWriterMargin"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/writerTextView2"
+                    app:layout_constraintTop_toBottomOf="@id/tvMovieDetailWriter2"
                     />
 
 

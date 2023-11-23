@@ -9,7 +9,7 @@
         tools:context=".uiscreens.movie.MainActivity">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/movie_toolbar"
+            android:id="@+id/abMovieList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -18,11 +18,11 @@
             app:title="Movie App"
             style="@style/ToolbarThemeOverlay"
             app:titleTextAppearance="@style/ToolbarThemeOverlay"
-            android:textSize="22sp"
+            android:textSize="@dimen/abTextSize"
             app:titleTextColor="@color/colorPrimaryDark">
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/movie_search"
+                android:id="@+id/svMovieList"
                 app:searchIcon="@drawable/ic_search_black"
                 style="@style/Widget.AppCompat.SearchView"
                 android:layout_width="wrap_content"
@@ -32,27 +32,29 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:visibility="gone"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_toolbar" />
-
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/rvMovieList"
             android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/movie_toolbar"
+            app:layout_constraintTop_toBottomOf="@id/abMovieList"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/rvMovieLayoutMargin"
+            />
+
+        <TextView
+            android:id="@+id/tvErrorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/movies_not_found"
+            android:visibility="gone"
+            android:textSize="@dimen/tvErrorTextSize"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/rvMovieList"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
 

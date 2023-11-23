@@ -26,7 +26,24 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"http://www.omdbapi.com\"")
+            buildConfigField("String", "API_KEY", "\"2a4bc1aa\"")
+            buildConfigField("String", "SEARCH", "\"ram\"")
         }
+        debug {
+            versionNameSuffix = ".dev"
+            buildConfigField("String", "BASE_URL", "\"http://www.omdbapi.com\"")
+            buildConfigField("String", "API_KEY", "\"2a4bc1aa\"")
+            buildConfigField("String", "SEARCH", "\"king\"")
+        }
+        create("prod") {
+            initWith(getByName("debug"))
+            versionNameSuffix = ".prod"
+            buildConfigField("String", "BASE_URL", "\"http://www.omdbapi.com\"")
+            buildConfigField("String", "API_KEY", "\"2a4bc1aa\"")
+            buildConfigField("String", "SEARCH", "\"batman\"")
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -37,6 +54,7 @@ android {
     }
     buildFeatures{
         dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -78,4 +96,7 @@ dependencies {
 
     // paging 3
     implementation("androidx.paging:paging-runtime-ktx:3.3.0-alpha02")
+
+     //OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
 }

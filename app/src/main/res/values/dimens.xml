@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="abTextSize">22sp</dimen>
+    <dimen name="tvErrorTextSize">25sp</dimen>
+    <dimen name="rvMovieLayoutMargin">10dp</dimen>
+    <dimen name="ccRadius">16dp</dimen>
+    <dimen name="cvLayoutWidth">0dp</dimen>
+    <dimen name="cvStrokeWidth">1dp</dimen>
+    <dimen name="ivLayoutWidth">150dp</dimen>
+    <dimen name="ivLayoutHeight">160dp</dimen>
+    <dimen name="tvRowMovieTitleLayoutWidth">0dp</dimen>
+    <dimen name="tvRowMovieTitleLayoutMarginStart">12dp</dimen>
+    <dimen name="tvRowMovieTitleLayoutMarginTop">12dp</dimen>
+    <dimen name="tvRowMovieTitleLayoutMarginEnd">12dp</dimen>
+    <dimen name="tvRowMovieTitleTextSize">20sp</dimen>
+    <dimen name="tvRowMovieTitleLayout">12dp</dimen>
+    <dimen name="tvMovieYearWidth">0dp</dimen>
+    <dimen name="tvMovieYearMarginTop">4dp</dimen>
+    <dimen name="tvMovieYearTextSize">18sp</dimen>
+    <dimen name="tvMovieTypeWidth">0dp</dimen>
+    <dimen name="tvMovieTypeMarginTop">8dp</dimen>
+    <dimen name="tvMovieTypeTextSize">18sp</dimen>
+    <dimen name="scrollMovieDetailHeight">0dp</dimen>
+    <dimen name="clMovieDetailsPaddingBottom">30dp</dimen>
+    <dimen name="tvMovieDetailTitleMarginStart">16dp</dimen>
+    <dimen name="tvMovieDetailTitleMarginTop">10dp</dimen>
+    <dimen name="tvMovieDetailTitleMarginEnd">16dp</dimen>
+    <dimen name="tvMovieDetailTitlePadding">5dp</dimen>
+    <dimen name="tvMovieDetailTitleTextSize">20sp</dimen>
+
+    <dimen name="tvMovieDetailTypeMarginStart">16dp</dimen>
+    <dimen name="tvMovieDetailTypeMarginTop">20dp</dimen>
+    <dimen name="tvMovieDetailTypeMarginBottom">10dp</dimen>
+    <dimen name="tvMovieDetailTypeTextSize">14sp</dimen>
+
+    <dimen name="tvMovieDetailYearWidth">260dp</dimen>
+    <dimen name="tvMovieDetailYearMarginTop">20dp</dimen>
+    <dimen name="tvMovieDetailYearMarginEnd">10dp</dimen>
+    <dimen name="tvMovieDetailYearMarginBottom">10dp</dimen>
+    <dimen name="tvMovieDetailYearTextSize">14sp</dimen>
+
+    <dimen name="ivMovieDetailMoviePosterWidth">0dp</dimen>
+    <dimen name="ivMovieDetailMoviePosterHeight">430dp</dimen>
+    <dimen name="ivMovieDetailMoviePosterPaddingStart">10dp</dimen>
+    <dimen name="ivMovieDetailMoviePosterPaddingEnd">10dp</dimen>
+    <dimen name="ivMovieDetailMoviePosterPaddingBottom">10dp</dimen>
+
+    <dimen name="tvDirector1TextSize">20sp</dimen>
+    <dimen name="tvDirector1Margin">20dp</dimen>
+
+    <dimen name="vDirectorHeight">1.5dp</dimen>
+    <dimen name="vDirectorMargin">5dp</dimen>
+
+    <dimen name="tvMovieDetailWriter1TextSize">20sp</dimen>
+    <dimen name="tvMovieDetailWriter1Margin">20dp</dimen>
+
+    <dimen name="tvMovieDetailWriter2TextSize">18sp</dimen>
+    <dimen name="tvMovieDetailWriter2Margin">20dp</dimen>
+
+    <dimen name="vMovieDetailWriterHeight">1.5dp</dimen>
+    <dimen name="vMovieDetailWriterMargin">5dp</dimen>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

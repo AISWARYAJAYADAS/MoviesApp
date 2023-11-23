@@ -7,9 +7,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import coil.load
+import com.example.movieapp.BuildConfig
 import com.example.movieapp.R
 import com.example.movieapp.databinding.ActivityMovieDetailsBinding
-import com.example.movieapp.util.Constants
+import com.example.movieapp.models.details.MovieDetailsRespnse
 import com.example.movieapp.viewmodels.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,65 +19,73 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailsBinding
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModels()
     private var idValue = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
         setContentView(binding.root)
 
-       // supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        setSupportActionBar(binding.appToolbar)
+        setSupportActionBar(binding.abMovieDetail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         idValue = intent.getStringExtra("id").toString()
         getMovieDetails(idValue)
         observeMovieDetailData()
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                onBackPressed() // This will navigate to the previous screen
+                finish()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getMovieDetails(idValue:String) {
-        movieDetailsViewModel.fetchMovieDetails(idValue, Constants.API_KEY)
+    private fun getMovieDetails(idValue: String) {
+        movieDetailsViewModel.fetchMovieDetails(idValue, BuildConfig.API_KEY)
     }
+
     private fun observeMovieDetailData() {
         movieDetailsViewModel.movieDetailState.observe(this) { response ->
             when (response) {
                 is MovieDetailsViewModel.MovieDetailState.Success -> {
-                    response.movieDetail.let { apiResponse ->
-                        binding.moviePosterImageView.load(apiResponse.body()?.poster) {
-                            crossfade(600)
-                            //  .error(R.drawable.ic_placeholder_image)
-                        }
-                        binding.movieTitleTextView.text= response.movieDetail.body()?.title ?: "movie title"
-                        binding.movieYearTextView.text= response.movieDetail.body()?.year ?: "movie year"
-                        binding.movieTypeTextView.text= response.movieDetail.body()?.type ?: "movie type"
-                        binding.directorTextView2.text= response.movieDetail.body()?.director ?: "movie director"
-                        binding.writerTextView2.text= response.movieDetail.body()?.writer ?: "movie writer"
-                    }
+                    handleSuccessState(response.movieDetail.body())
                 }
 
                 is MovieDetailsViewModel.MovieDetailState.Error -> {
-                    Toast.makeText(
-                        this,
-                        response.errorMessage,
-                        Toast.LENGTH_LONG
-                    ).show()
+                    showErrorState(response.errorMessage)
                 }
 
                 is MovieDetailsViewModel.MovieDetailState.Loading -> {
-                    //  binding.progressBar.visibility = View.VISIBLE
+                    // Handle loading state if needed
                 }
 
                 else -> {}
             }
         }
     }
+
+    private fun handleSuccessState(movieDetail: MovieDetailsRespnse?) {
+        movieDetail?.let {
+            with(binding) {
+                ivMovieDetailMoviePoster.load(it.poster) {
+                    crossfade(600)
+                    //  .error(R.drawable.ic_placeholder_image)
+                }
+                tvMovieDetailTitle.text = it.title
+                tvMovieDetailYear.text = it.year
+                tvMovieDetailType.text = it.type
+                tvMovieDetailDirector.text = it.director
+                tvMovieDetailWriter2.text = it.writer
+            }
+        }
+    }
+
+    private fun showErrorState(errorMessage: String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+    }
 }
+
+

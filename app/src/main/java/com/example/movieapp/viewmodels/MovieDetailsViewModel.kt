@@ -29,13 +29,10 @@ class MovieDetailsViewModel @Inject constructor(
                 val movieDetail = repository.getMovieDetails(imdbIDQuery, apiKey)
                 _movieDetailState.value = MovieDetailState.Success(movieDetail)
             } catch (e: HttpException) {
-                // Handle HTTP errors (e.g., 404 Not Found)
                 _movieDetailState.value = MovieDetailState.Error("Movie details not found")
             } catch (e: IOException) {
-                // Handle network-related errors (e.g., no internet connection)
                 _movieDetailState.value = MovieDetailState.Error("Network error")
             } catch (e: Exception) {
-                // Handle other exceptions
                 _movieDetailState.value = MovieDetailState.Error("Failed to fetch movie details")
             }
         }

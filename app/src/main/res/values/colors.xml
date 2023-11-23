@@ -18,6 +18,8 @@
 
     <color name="navyBlue">#000080</color>
     <color name="navy">#000435</color>
+    <color name="errorMessageBackground">#FF0000</color>
+
 
 
 </resources>

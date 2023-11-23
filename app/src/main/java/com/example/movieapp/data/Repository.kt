@@ -10,18 +10,18 @@ import javax.inject.Inject
 
 @ViewModelScoped
 class Repository @Inject constructor(
-    remoteDataSource: RemoteDataSource
-){
-    private val remote = remoteDataSource
-
-    suspend fun getMovieDetails(imdbIDQuery: String,apiKey: String) : Response<MovieDetailsRespnse>{
-        return remote.getMovieDetails(imdbIDQuery, apiKey)
+    private val remoteDataSource: RemoteDataSource
+) {
+    suspend fun getMovieDetails(
+        imdbIDQuery: String,
+        apiKey: String
+    ): Response<MovieDetailsRespnse> {
+        return remoteDataSource.getMovieDetails(imdbIDQuery, apiKey)
     }
 
     fun getMoviesPaging(searchQuery: String) =
         Pager(
             config = PagingConfig(pageSize = 10, enablePlaceholders = false),
-            pagingSourceFactory = { MoviePaging(searchQuery, remote) }
+            pagingSourceFactory = { MoviePaging(searchQuery, remoteDataSource) }
         ).flow
-
 }

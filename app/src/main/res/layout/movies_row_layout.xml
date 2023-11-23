@@ -9,33 +9,34 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/movieRowLayout"
+        android:id="@+id/clMovieRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="@dimen/rvMovieLayoutMargin">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/row_cardView"
-            android:layout_width="0dp"
+            android:id="@+id/cvMovieRow"
+            android:layout_width="@dimen/cvLayoutWidth"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="@dimen/ccRadius"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:strokeColor="@color/lightMediumGray"
-            app:strokeWidth="1dp">
+            app:strokeWidth="@dimen/cvStrokeWidth">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                tools:ignore="ExtraText">
 
                 <ImageView
-                    android:id="@+id/moviePosterImageView"
+                    android:id="@+id/ivMoviePoster"
                     loadImageFromUrl="@{movie.poster}"
-                    android:layout_width="150dp"
-                    android:layout_height="160dp"
+                    android:layout_width="@dimen/ivLayoutWidth"
+                    android:layout_height="@dimen/ivLayoutHeight"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -44,27 +45,27 @@
                     android:contentDescription="@string/movieposter" />
 
                 <TextView
-                    android:id="@+id/movieTitleTextView"
-                    android:layout_width="0dp"
+                    android:id="@+id/tvMovieTitle"
+                    android:layout_width="@dimen/tvRowMovieTitleLayoutWidth"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="@dimen/tvRowMovieTitleLayoutMarginStart"
+                    android:layout_marginTop="@dimen/tvRowMovieTitleLayoutMarginTop"
+                    android:layout_marginEnd="@dimen/tvRowMovieTitleLayoutMarginEnd"
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:fontFamily="@font/courgette"
                     android:text="@{movie.title}"
                     android:textColor="@color/navyBlue"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/tvRowMovieTitleTextSize"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/moviePosterImageView"
+                    app:layout_constraintStart_toEndOf="@+id/ivMoviePoster"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/movieYearTextView"
+                    android:id="@+id/tvMovieYear"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -73,27 +74,27 @@
                     android:text="@{movie.year}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@id/movieTitleTextView"
-                    app:layout_constraintStart_toStartOf="@+id/movieTitleTextView"
-                    app:layout_constraintTop_toBottomOf="@id/movieTitleTextView"
+                    app:layout_constraintEnd_toEndOf="@id/tvMovieTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvMovieTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvMovieTitle"
 
                     />
 
                 <TextView
-                    android:id="@+id/movieTypeTextView"
-                    android:layout_width="0dp"
+                    android:id="@+id/tvMovieType"
+                    android:layout_width="@dimen/tvMovieTypeWidth"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/tvMovieTypeMarginTop"
                     android:ellipsize="end"
                     android:gravity="center_horizontal"
                     android:maxLines="1"
                     android:fontFamily="@font/roboto_slab"
                     android:text="@{movie.type}"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@id/movieTitleTextView"
-                    app:layout_constraintStart_toStartOf="@+id/movieTitleTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/movieYearTextView" />
+                    android:textSize="@dimen/tvMovieTypeTextSize"
+                    app:layout_constraintEnd_toEndOf="@id/tvMovieTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvMovieTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMovieYear" />
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
